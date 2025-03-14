@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  project: CollectionEntry<"work">;
+}
+
+const { data, slug } = Astro.props.project;
+---
+
+<a
+  class="card card-sm border border-base-200 bg-base-200 hover:bg-base-100 focus:bg-base-300 shadow hover:shadow-lg"
+  href={`/work/${slug}`}
+>
+{
+  data.anim && (
+  <figure>
+    <Image
+    class="max-w-full object-cover aspect-video rounded-t-lg"
+    src={data.anim}
+    width={640}
+    height={360}
+    format="webp"
+    alt={data.img_alt || ""}
+    loading="eager"
+  />
+  </figure>
+  )
+}
+{
+  !data.anim && (
+  <figure>
+    <Image
+      class="max-w-full object-cover aspect-video rounded-t-lg"
+      src={data.img}
+      width={640}
+      height={360}
+      format="webp"
+      alt={data.img_alt || ""}
+      loading="eager"
+      transition:name=`media-image-${slug}`
+    />
+  </figure>
+  )
+}
+  <div class="card-body">
+    <h2 class="card-title text-primary line-clamp-1">{data.title}</h2>
+    <div class="text-neutral text-sm font-light">
+      {
+          data.publishDate.toLocaleDateString(
+              "en-US",
+              {
+                  year: "numeric",
+                  month: "short",
+              },
+          )
+      }
+    </div>
+    <div class="line-clamp-2">{data.description}</div>
+    <div class="flex flex-wrap justify-evenly justify-items-center gap-3" transition:name=`media-tags-${data.title}`>
+      {
+        data.tags?.map((tag: string) => (
+            <Icon name={"devicon:"+tag.toLowerCase()} width="2em" height="2em"/>
+        ))
+      }
+    </div>
+  </div>
+</a>

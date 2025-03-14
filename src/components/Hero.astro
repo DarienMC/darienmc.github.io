@@ -1,0 +1,86 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div
+  class="hero min-h-[80vh] xl:min-h-[95vh] bg-[url(/assets/bg-hero-image-light.webp)] dark:bg-[url(/assets/bg-hero-image-dark.webp)]"
+>
+  <div class="hero-content text-center">
+    <div class="max-w-lg">
+      <div class="join mb-5 gap-2 text-2xl text-start">
+        <div class="join-item">Hi there!</div>
+        <div class="join-item">
+          <Icon
+            name="ph:hand-waving-duotone"
+            size="1.2em"
+            class="text-warning"
+          />
+        </div>
+        <div class="join-item">I develop</div>
+        <div class="join-item">
+          <div class="text-carousel overflow-hidden h-8">
+            <div class="text-carousel-item h-full font-bold text-primary">
+              software
+            </div>
+            <div class="text-carousel-item h-full font-bold text-info">
+              systems
+            </div>
+            <div class="text-carousel-item h-full font-bold text-error">
+              apps
+            </div>
+            <div class="text-carousel-item h-full font-bold text-secondary">
+              games
+            </div>
+            <div class="text-carousel-item h-full font-bold text-accent">
+              websites
+            </div>
+            <div class="text-carousel-item h-full font-bold text-primary">
+              software
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="mb-5 text-2xl sm:text-4xl font-bold">
+        Darien Muse-Charbonneau
+      </h1>
+      <h2 class="mb-5 text-lg">Software Developer based in AB, Canada</h2>
+      <div>
+        <a class="btn btn-sm btn-outline btn-warning" href="/about">About me</a>
+        <a class="btn btn-sm btn-outline btn-info" href="/work">My work</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="css">
+  @keyframes text-slide {
+    0%,
+    10% {
+      margin-top: 0rem;
+    }
+    20%,
+    30% {
+      margin-top: -2rem;
+    }
+    40%,
+    50% {
+      margin-top: -4rem;
+    }
+    60%,
+    70% {
+      margin-top: -6rem;
+    }
+    80%,
+    90% {
+      margin-top: -8rem;
+    }
+    100% {
+      margin-top: -10rem;
+    }
+  }
+
+  .text-carousel div:first-child {
+    animation: text-slide 10s infinite;
+  }
+</style>

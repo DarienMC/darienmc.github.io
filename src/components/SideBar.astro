@@ -1,0 +1,107 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+interface Props {
+    sideBarActiveItemID?: string | undefined;
+}
+
+const { sideBarActiveItemID } = Astro.props;
+const activeClass = "bg-base-300";
+---
+
+<div class="drawer-side">
+    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"
+    ></label>
+    <ul class="menu min-h-full w-80 p-4 bg-base-200">
+        <!-- Sidebar content here -->
+        <div class="flex justify-center">
+            <div class="avatar mt-3 mb-3">
+                <div class="mask mask-circle size-40 bg-base-content">
+                    <Image
+                        src="/assets/portrait.webp"
+                        alt="Darien Muse-Charbonneau's portrait"
+                        width="168"
+                        height="168"
+                        loading="eager"
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="text-xl text-center font-black mt-2">
+            Darien Muse-Charbonneau
+        </div>
+        <div class="text-lg text-center mb-3">Software Developer</div>
+
+        <li>
+            <a class="" id="sb-home" href="/">
+                <Icon name="ph:house-fill" class="text-primary" />
+                Home
+            </a>
+        </li>
+        <li>
+            <a class="" id="sb-work" href="/work">
+                <Icon name="ph:code" class="text-info" />
+                Work
+            </a>
+        </li>
+        <li>
+            <a class="" id="sb-about" href="/about">
+                <Icon name="ph:identification-card" class="text-warning" />
+                About</a
+            >
+        </li>
+        <li>
+            <a class="" id="sb-location" href="https://maps.app.goo.gl/Wk6pZbNuPR8GVbqM6" target="_blank">
+                <Icon name="ph:map-pin-fill" class="text-error" />
+                Lethbridge, AB, Canada
+            </a>
+        </li>
+        <div class="divider"></div>
+        <nav class="join gap-4 place-self-center">
+            <a href="https://ca.linkedin.com/in/darienmc" target="_blank">
+                <Icon
+                    name="devicon-plain:linkedin"
+                    title="Darien Muse-Charbonneau's LinkedIn profile"
+                />
+            </a>
+            <a href="https://github.com/DarienMC" target="_blank">
+                <Icon
+                    name="ph:github-logo-fill"
+                    title="Darien Muse-Charbonneau's GitHub profile"
+                />
+            </a>
+            <a href="https://darienmc.itch.io" target="_blank">
+                <Icon
+                    name="itchio-logo-textless"
+                    title="Darien Muse-Charbonneau's Itch.io page"
+                />
+            </a>
+        </nav>
+    </ul>
+</div>
+
+<style lang="css">
+    [data-icon] {
+        width: 2em;
+        height: 2em;
+    }
+    [data-icon]:hover {
+        color: var(--color-primary);
+    }
+    /*itch.io's primary brand color is called "itchy carnation" */
+    [data-icon="itchio-logo-textless"]:hover {
+        color: #fa5c5c;
+    }
+</style>
+
+<script
+    is:inline
+    define:vars={{
+        sideBarActiveItemID: sideBarActiveItemID,
+        activeClass: activeClass,
+    }}
+>
+    const activeItemElem = document.getElementById(sideBarActiveItemID);
+    activeItemElem && activeItemElem.classList.add(activeClass);
+</script>

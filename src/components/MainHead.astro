@@ -1,0 +1,20 @@
+---
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+	title?: string | undefined;
+	description?: string | undefined;
+}
+
+const {
+	title = 'Darien MC',
+	description = 'The personal site of Darien Muse-Charbonneau',
+} = Astro.props;
+---
+<meta charset="utf-8" />
+<meta name="title" content={title} />
+<meta name="description" property="og:description" content={description} />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+<title>{title}</title>
+<ClientRouter fallback='none' />

@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+import AboutSection from "./AboutSection.astro";
+---
+
+<AboutSection title="Education" icon="ph:graduation-cap">
+    <ul
+        class="timeline timeline-snap-icon timeline-compact timeline-vertical ml-10"
+    >
+        <li>
+            <div class="timeline-middle">
+                <Icon name="ph:certificate-fill" width="1.25em" height="1.25em" class="text-info" />
+            </div>
+            <div class="timeline-end mb-10">
+                <time class="font-mono italic">Feb 2023</time>
+                <div class="text-lg font-bold">McGill University</div>
+                <div class="text-sm text-neutral">Montreal, QC, Canada</div>
+                <div class="">
+                    Bachelor of Engineering in Software Engineering
+                </div>
+            </div>
+            <hr class="bg-info" />
+        </li>
+        <li>
+            <hr class="bg-info" />
+            <div class="timeline-middle">
+                <Icon name="ph:certificate-fill" width="1.25em" height="1.25em" class="text-info" />
+            </div>
+            <div class="timeline-end">
+                <time class="font-mono italic">May 2017</time>
+                <div class="text-lg font-bold">
+                    Champlain College Lennoxville
+                </div>
+                <div class="text-sm text-neutral">Sherbrooke, QC, Canada</div>
+                <div class="">
+                    Diploma of College Studies in Pure & Applied Sciences
+                </div>
+            </div>
+        </li>
+    </ul>
+</AboutSection>

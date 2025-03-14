@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    title: string;
+    icon: string;
+}
+
+const { title, icon } = Astro.props;
+---
+
+<div tabindex="0" class="collapse collapse-arrow max-w-4xl">
+    <input type="checkbox" checked />
+    <div class="collapse-title">
+        <div class="join">
+            <Icon
+                name={icon}
+                width="2em"
+                height="2em"
+                class="join-item text-primary"
+            />
+            <h2 class="join-item text-3xl text-start font-bold ml-3">
+                {title}
+            </h2>
+        </div>
+    </div>
+    <div class="collapse-content">
+        <slot />
+    </div>
+</div>

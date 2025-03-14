@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components";
+import AboutSection from "./AboutSection.astro";
+---
+
+<AboutSection title="Experience" icon="ph:briefcase">
+    <ul
+    class="timeline timeline-snap-icon timeline-compact timeline-vertical ml-10"
+>
+    <li>
+        <div class="timeline-middle">
+            <Icon name="ph:circle-fill" width="1.25em" height="1.25em" class="text-accent" />
+        </div>
+        <div class="timeline-end mb-10">
+            <time class="font-mono italic">Feb 2023 - Present</time>
+            <div class="text-lg font-bold">Prairie Rose Lodge</div>
+            <div class="text-sm text-neutral">Milk River, AB, Canada</div>
+            <div class="">
+                Casual Floor Worker | Kitchen Assistant | Housekeeping Assistant
+            </div>
+        </div>
+        <hr class="bg-accent" />
+    </li>
+    <li>
+        <hr class="bg-accent" />
+        <div class="timeline-middle">
+            <Icon name="ph:circle-fill" width="1.25em" height="1.25em" class="text-accent" />
+        </div>
+        <div class="timeline-end mb-10">
+            <time class="font-mono italic">Jun 2021 - Sep 2022</time>
+            <div class="text-lg font-bold">Milk River Cable Club</div>
+            <div class="text-sm text-neutral">Milk River, AB, Canada</div>
+            <div class="">
+                Field Technician Assistant
+            </div>
+        </div>
+        <hr class="bg-accent" />
+    </li>
+    <li>
+        <hr class="bg-accent" />
+        <div class="timeline-middle">
+            <Icon name="ph:circle-fill" width="1.25em" height="1.25em" class="text-accent" />
+        </div>
+        <div class="timeline-end">
+            <time class="font-mono italic">Jun 2014 - Aug 2020</time>
+            <div class="text-lg font-bold">
+                Olymel
+            </div>
+            <div class="text-sm text-neutral">Saint-Hyacinthe, QC, Canada</div>
+            <div class="">
+                Seasonal Laborer
+            </div>
+        </div>
+    </li>
+</ul>
+</AboutSection>
