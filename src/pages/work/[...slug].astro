@@ -1,0 +1,107 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import Prose from "../../components/Prose.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    entry: CollectionEntry<"work">;
+}
+
+export async function getStaticPaths() {
+    const work = await getCollection("work");
+    return work.map((entry: { slug: any }) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout
+    title={"Darien MC | " + entry.data.title}
+    description={entry.data.description}
+    sideBarActiveItemID="work"
+>
+    <div class="flex justify-center m-3">
+        <Prose>
+            <h1 class="pt-6 text-5xl text-center">{entry.data.title}</h1>
+            <div class="not-prose">
+                <div class="join gap-3">
+                    <a
+                        class="avatar join-item"
+                        href="/"
+                        transition:name="media-image-avatar"
+                    >
+                        <div
+                            class="hover:ring-1 ring-base-content size-12 rounded-full bg-base-content"
+                        >
+                            <Image
+                                src="/assets/portrait.webp"
+                                alt="Darien Muse-Charbonneau's portrait"
+                                width={168}
+                                height={168}
+                                format="webp"
+                                loading="eager"
+                            />
+                        </div>
+                    </a>
+                    <div class="join join-vertical join-item">
+                        <p class="join-item font-bold text-nowrap">
+                            Darien Muse-Charbonneau
+                        </p>
+                        <div class="join-item text-neutral text-sm font-light">
+                            {
+                                entry.data.publishDate.toLocaleDateString(
+                                    "en-US",
+                                    {
+                                        year: "numeric",
+                                        month: "short",
+                                        day: "numeric",
+                                    },
+                                )
+                            }
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-wrap justify-evenly justify-items-center gap-3 m-3"
+                        transition:name=`media-tags-${entry.data.title}`
+                    >
+                        {
+                            entry.data.tags?.map((tag: string) => (
+                                <Icon
+                                    name={"devicon:" + tag.toLowerCase()}
+                                    title={tag}
+                                />
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+            <Image
+                src={entry.data.img}
+                alt={entry.data.img_alt || ""}
+                width={1600}
+                height={900}
+                format="webp"
+                loading="eager"
+                transition:name=`media-image-${entry.slug}`
+                class="aspect-video object-cover object-center"
+            />
+            <p>{entry.data.description}</p>
+            <Content />
+        </Prose>
+    </div>
+</BaseLayout>
+
+<style>
+    [data-icon] {
+        width: 1.2em;
+        height: 1.2em;
+    }
+</style>
